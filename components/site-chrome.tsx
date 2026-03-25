@@ -2,56 +2,12 @@ import Link from "next/link";
 import { getCurrentUser } from "@/lib/auth";
 import { navigationItems } from "@/lib/site-data";
 import Image from "next/image";
+import { SiteHeaderClient } from "@/components/site-header-client";
 
 export async function SiteHeader() {
   const currentUser = await getCurrentUser();
 
-  return (
-    <header
-      data-cursor-native="true"
-      className="sticky top-0 z-50 border-b border-white/40 bg-white/70 backdrop-blur-2xl"
-    >
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-10">
-        <Link href="/" className="flex items-center gap-3">
-          {/* <span className="flex size-11 items-center justify-center rounded-2xl bg-slate-950 text-sm font-semibold text-white shadow-[0_20px_40px_rgba(15,23,42,0.22)]">
-            RP
-          </span> */}
-          <Image alt="logo" src={"/logo2.svg"} width={50} height={50}/>
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">
-              RepManagement
-            </p>
-            <p className="text-sm text-slate-900">Social Media Management</p>
-          </div>
-        </Link>
-        <nav className="hidden items-center gap-6 xl:flex">
-          {navigationItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-slate-600 transition hover:text-slate-950"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="flex items-center gap-3">
-          <Link
-            href={currentUser ? "/account" : "/login"}
-            className="hidden rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-white sm:inline-flex"
-          >
-            {currentUser ? "Il tuo account" : "Area utente"}
-          </Link>
-          <Link
-            href="/prenota-consulenza"
-            className="inline-flex rounded-full bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(15,23,42,0.26)] transition hover:bg-slate-800"
-          >
-            Prenota ora
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
+  return <SiteHeaderClient isAuthenticated={Boolean(currentUser)} />;
 }
 
 export function SiteFooter() {

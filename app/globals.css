@@ -38,3 +38,110 @@ a {
 ::selection {
   background: rgba(14, 165, 233, 0.22);
 }
+
+@keyframes floatBadge {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes shinePhone {
+  0% {
+    transform: translate3d(-140%, 0, 0) skewX(-12deg);
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 0.65;
+  }
+
+  45% {
+    transform: translate3d(220%, 0, 0) skewX(-12deg);
+    opacity: 0.24;
+  }
+
+  100% {
+    transform: translate3d(220%, 0, 0) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeLiftIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.98);
+    filter: blur(12px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes editorialMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes doorOpenLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-104%, 0, 0);
+  }
+}
+
+@keyframes doorOpenRight {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(104%, 0, 0);
+  }
+}
+
+@keyframes doorSeamFade {
+  0% {
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes doorGlowBurst {
+  0% {
+    opacity: 0.12;
+    transform: translate3d(-50%, -50%, 0) scale(0.65);
+  }
+
+  35% {
+    opacity: 0.38;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(1.4);
+  }
+}
