@@ -1,7 +1,6 @@
 "use client";
 
 import { useLayoutEffect, useState } from "react";
-import { SITE_ENTRY_REVEAL_SESSION_KEY } from "@/lib/browser-constants";
 
 const ENTRY_ANIMATION_DURATION_MS = 1800;
 
@@ -10,10 +9,9 @@ export function SiteEntryReveal() {
 
   useLayoutEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const hasSeenReveal = window.sessionStorage.getItem(SITE_ENTRY_REVEAL_SESSION_KEY) === "true";
     let frameId = 0;
 
-    if (reducedMotion.matches || hasSeenReveal) {
+    if (reducedMotion.matches) {
       frameId = window.requestAnimationFrame(() => {
         setIsVisible(false);
       });
@@ -25,7 +23,6 @@ export function SiteEntryReveal() {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    window.sessionStorage.setItem(SITE_ENTRY_REVEAL_SESSION_KEY, "true");
 
     const timeoutId = window.setTimeout(() => {
       document.body.style.overflow = previousOverflow;
