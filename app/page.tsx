@@ -104,52 +104,66 @@ export default function HomePage() {
           <div className="absolute -left-6 top-10 hidden h-28 w-28 rounded-full bg-sky-200/40 blur-3xl lg:block" />
           <div className="absolute right-0 top-0 hidden h-40 w-40 rounded-full bg-slate-200/50 blur-3xl lg:block" />
 
-          <div className="rounded-[2.8rem] border border-white/60 bg-[linear-gradient(180deg,_rgba(15,23,42,0.96),_rgba(15,23,42,0.9))] p-6 text-white shadow-[0_40px_120px_rgba(15,23,42,0.25)]">
-            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.28em] text-sky-200/80">
-                    Wallet dashboard preview
-                  </p>
-                  <p className="mt-2 text-sm text-slate-300">
-                    Esperienza cliente progettata per riacquisto e continuità.
-                  </p>
-                </div>
-                <div className="rounded-full bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-200">
-                  online
-                </div>
-              </div>
+          <div className="relative mx-auto w-full max-w-[20.5rem]">
+            <div className="pointer-events-none absolute -left-1.5 top-22 hidden h-11 w-1 rounded-full bg-slate-800 lg:block" />
+            <div className="pointer-events-none absolute -left-1.5 top-34 hidden h-14 w-1 rounded-full bg-slate-800 lg:block" />
+            <div className="pointer-events-none absolute -right-1.5 top-28 hidden h-18 w-1 rounded-full bg-slate-800 lg:block" />
 
-              <div className="mt-8 grid gap-4 rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
-                <p className="text-sm text-slate-300">Saldo disponibile</p>
-                <p className="text-5xl font-semibold tracking-[-0.06em]">
-                  {formatCurrency(1575)}
-                </p>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-[1.3rem] border border-white/10 bg-white/5 p-4">
-                    <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Ordini</p>
-                    <p className="mt-2 text-lg font-semibold">Card acquistate e archiviate</p>
+            <div className="rounded-[2.8rem] bg-[linear-gradient(180deg,_#1f2430_0%,_#2a3140_45%,_#202633_100%)] p-[9px] shadow-[0_34px_95px_rgba(15,23,42,0.24)] ring-1 ring-white/20">
+              <div className="relative overflow-hidden rounded-[2.35rem] border border-white/8 bg-[linear-gradient(180deg,_rgba(35,41,54,0.98),_rgba(39,46,60,0.94))] px-4 pb-4 pt-11 text-white">
+                <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-center pt-3">
+                  <div className="h-6 w-28 rounded-full bg-black/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]" />
+                </div>
+                <div className="pointer-events-none absolute inset-x-0 top-4 flex items-center justify-center">
+                  <div className="h-2 w-2 rounded-full bg-slate-700" />
+                </div>
+
+                <div className="rounded-[1.8rem] border border-white/8 bg-white/[0.03] p-4.5 backdrop-blur">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-sm uppercase tracking-[0.28em] text-sky-200/80">
+                        Wallet dashboard preview
+                      </p>
+                      <p className="mt-2 text-sm text-slate-300">
+                        Esperienza cliente progettata per riacquisto e continuità.
+                      </p>
+                    </div>
+                    <div className="rounded-full bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-200">
+                      online
+                    </div>
                   </div>
-                  <div className="rounded-[1.3rem] border border-white/10 bg-white/5 p-4">
-                    <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Movimenti</p>
-                    <p className="mt-2 text-lg font-semibold">Top-up, bonus e utilizzi wallet</p>
+
+                  <div className="mt-8 grid gap-4 rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
+                    <p className="text-sm text-slate-300">Saldo disponibile</p>
+                    <p className="text-5xl font-semibold tracking-[-0.06em]">
+                      {formatCurrency(1575)}
+                    </p>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <div className="rounded-[1.3rem] border border-white/10 bg-white/5 p-2">
+                        <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Ordini</p>
+                        <p className="mt-2 text-xs font-semibold">Card acquistate e archiviate</p>
+                      </div>
+                      <div className="rounded-[1.3rem] border border-white/10 bg-white/5 p-2">
+                        <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Move</p>
+                        <p className="mt-2 text-xs font-semibold">Top-up, bonus e utilizzi wallet</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 grid gap-4">
+                    {[
+                      "Acquisti card verificati lato server",
+                      
+                    ].map((entry) => (
+                      <div
+                        key={entry}
+                        className="rounded-[1.5rem] border border-white/10 bg-white/5 px-4 py-4 text-sm text-slate-200"
+                      >
+                        {entry}
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-6 grid gap-4">
-                {[
-                  "Acquisti card verificati lato server",
-                  "Credito accreditato nel wallet cliente",
-                  "Storico ordini e servizi acquistati",
-                ].map((entry) => (
-                  <div
-                    key={entry}
-                    className="rounded-[1.5rem] border border-white/10 bg-white/5 px-4 py-4 text-sm text-slate-200"
-                  >
-                    {entry}
-                  </div>
-                ))}
               </div>
             </div>
           </div>

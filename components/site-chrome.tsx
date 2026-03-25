@@ -65,9 +65,7 @@ export function SiteFooter() {
         <div className="grid gap-8 rounded-[2.5rem] border border-white/70 bg-white/80 p-8 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur xl:grid-cols-[1.15fr_0.7fr_0.7fr_0.85fr]">
           <div className="space-y-5">
             <div className="flex items-center gap-3">
-              <span className="flex size-12 items-center justify-center rounded-2xl bg-slate-950 text-sm font-semibold text-white shadow-[0_20px_40px_rgba(15,23,42,0.22)]">
-                RP
-              </span>
+              <Image alt="logo" src={"/logo2.svg"} width={50} height={50}/>
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-sky-700/70">
                   RP Management
