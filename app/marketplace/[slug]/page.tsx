@@ -34,7 +34,7 @@ export default async function MarketplaceDetailPage({
           <div>
             <p className="text-sm uppercase tracking-[0.24em] text-sky-200/80">Valore card</p>
             <p className="mt-3 text-5xl font-semibold tracking-[-0.06em]">
-              {formatCurrency(product.price)}
+              {typeof(product.price) === "number" ? formatCurrency(product.price) : product.price}
             </p>
             <p className="mt-3 text-sm text-slate-300">{product.delivery}</p>
           </div>
