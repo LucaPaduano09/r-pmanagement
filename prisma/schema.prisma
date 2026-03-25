@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  CREDITED
+  CANCELLED
+}
+
+enum LedgerType {
+  TOP_UP
+  BONUS
+  SPEND
+  REFUND
+}
+
+model User {
+  id                 String              @id @default(auto()) @map("_id") @db.ObjectId
+  email              String              @unique
+  passwordHash       String?
+  firstName          String?
+  lastName           String?
+  phone              String?
+  walletBalance      Int                 @default(0)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  orders             Order[]
+  walletTransactions WalletTransaction[]
+  consultationLeads  ConsultationLead[]
+  contactMessages    ContactMessage[]
+}
+
+model Product {
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  slug       String      @unique
+  name       String
+  description String
+  price      Int
+  bonus      Int         @default(0)
+  active     Boolean     @default(true)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  orderItems   OrderItem[]
+}
+
+model Order {
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String       @db.ObjectId
+  status       OrderStatus  @default(PENDING)
+  totalAmount  Int
+  creditedAt   DateTime?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  user         User         @relation(fields: [userId], references: [id])
+  items        OrderItem[]
+}
+
+model OrderItem {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  orderId    String   @db.ObjectId
+  productId  String   @db.ObjectId
+  title      String
+  unitPrice  Int
+  quantity   Int      @default(1)
+  walletGain Int
+  order      Order    @relation(fields: [orderId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id])
+}
+
+model WalletTransaction {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String      @db.ObjectId
+  type        LedgerType
+  amount      Int
+  description String
+  createdAt   DateTime    @default(now())
+  user        User        @relation(fields: [userId], references: [id])
+}
+
+model ConsultationLead {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String?  @db.ObjectId
+  name        String
+  email       String
+  brand       String?
+  budget      String?
+  goal        String
+  createdAt   DateTime @default(now())
+  user        User?    @relation(fields: [userId], references: [id])
+}
+
+model ContactMessage {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String?  @db.ObjectId
+  name        String
+  email       String
+  brand       String?
+  phone       String?
+  message     String
+  createdAt   DateTime @default(now())
+  user        User?    @relation(fields: [userId], references: [id])
+}
