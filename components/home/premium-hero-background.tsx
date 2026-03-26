@@ -28,7 +28,7 @@ export function PremiumHeroBackground() {
   return (
     <>
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.07)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(180deg,rgba(255,255,255,0.7),transparent_88%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.1)_1px,transparent_1px)] bg-[size:68px_68px] [mask-image:linear-gradient(180deg,rgba(255,255,255,0.82),transparent_88%)]" />
         <div className="absolute -top-24 left-[10%] h-72 w-72 rounded-full bg-sky-200/30 blur-3xl animate-[pulse_8s_ease-in-out_infinite]" />
         <div className="absolute right-[8%] top-16 h-80 w-80 rounded-full bg-cyan-100/45 blur-3xl animate-[pulse_10s_ease-in-out_infinite]" />
         <div className="absolute bottom-0 left-1/3 h-96 w-96 rounded-full bg-slate-200/40 blur-3xl animate-[pulse_12s_ease-in-out_infinite]" />

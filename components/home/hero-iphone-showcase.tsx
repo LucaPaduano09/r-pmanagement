@@ -7,17 +7,26 @@ const floatingBadges = [
   {
     label: "Lead flow",
     value: "+18 richieste",
-    className: "-left-8 top-18",
+    className: "-left-10 top-18",
+    tailClassName: "left-[calc(100%-0.2rem)] top-[55%] -translate-y-1/2",
+    duration: 7.4,
+    delay: 0.2,
   },
   {
     label: "Wallet top-up",
     value: "+500 euro",
-    className: "right-[-1.25rem] top-30",
+    className: "-right-7 top-30",
+    tailClassName: "right-[calc(100%-0.2rem)] top-[56%] -translate-y-1/2",
+    duration: 6.6,
+    delay: 1.4,
   },
   {
     label: "Campaign ROAS",
     value: "4.6x",
-    className: "-left-6 bottom-24",
+    className: "-left-7 bottom-24",
+    tailClassName: "left-[calc(100%-0.2rem)] top-[58%] -translate-y-1/2",
+    duration: 8.1,
+    delay: 2.6,
   },
 ];
 
@@ -48,16 +57,35 @@ export function HeroIphoneShowcase() {
       {floatingBadges.map((badge, index) => (
         <div
           key={badge.label}
-          className={`pointer-events-none absolute z-20 hidden rounded-[1.35rem] border border-white/75 bg-white/88 px-4 py-3 shadow-[0_20px_60px_rgba(15,23,42,0.09)] backdrop-blur lg:block ${badge.className}`}
+          className={`pointer-events-none absolute z-20 hidden lg:block ${badge.className}`}
           style={{
-            animation: `floatBadge ${5 + index}s ease-in-out infinite`,
-            animationDelay: `${index * 0.6}s`,
+            animation: `floatBadge ${4.8 + index * 0.7}s ease-in-out infinite, floatingBubblePresence ${badge.duration}s ease-in-out infinite`,
+            animationDelay: `${index * 0.5}s, ${badge.delay}s`,
           }}
         >
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-sky-700/70">
-            {badge.label}
-          </p>
-          <p className="mt-1 text-sm font-semibold text-slate-950">{badge.value}</p>
+          <div className="relative px-4 py-3.5">
+            <span className="absolute inset-x-4 bottom-1 top-2 rounded-[999px] border border-white/85 bg-white/92 shadow-[0_20px_60px_rgba(15,23,42,0.09)] backdrop-blur-md" />
+            <span className="absolute left-2 top-4 h-12 w-12 rounded-full border border-white/85 bg-white/92 shadow-[0_16px_42px_rgba(15,23,42,0.06)]" />
+            <span className="absolute left-9 top-0 h-14 w-14 rounded-full border border-white/85 bg-white/92 shadow-[0_16px_42px_rgba(15,23,42,0.06)]" />
+            <span className="absolute right-9 top-0.5 h-13 w-13 rounded-full border border-white/85 bg-white/92 shadow-[0_16px_42px_rgba(15,23,42,0.06)]" />
+            <span className="absolute right-2 top-4 h-11 w-11 rounded-full border border-white/85 bg-white/92 shadow-[0_16px_42px_rgba(15,23,42,0.06)]" />
+            <span
+              className={`absolute h-4.5 w-4.5 rounded-full border border-white/85 bg-white/92 shadow-[0_12px_28px_rgba(15,23,42,0.06)] ${badge.tailClassName}`}
+            />
+            <span
+              className={`absolute h-3 w-3 rounded-full border border-white/85 bg-white/88 shadow-[0_10px_20px_rgba(15,23,42,0.05)] ${
+                badge.tailClassName.includes("left")
+                  ? "left-[calc(100%+0.7rem)] top-[62%]"
+                  : "right-[calc(100%+0.7rem)] top-[63%]"
+              }`}
+            />
+            <div className="relative z-10 min-w-[8.5rem] px-4 py-2.5">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-sky-700/70">
+                {badge.label}
+              </p>
+              <p className="mt-1 text-sm font-semibold text-slate-950">{badge.value}</p>
+            </div>
+          </div>
         </div>
       ))}
 

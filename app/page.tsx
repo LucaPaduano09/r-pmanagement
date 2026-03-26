@@ -45,7 +45,7 @@ export default function HomePage() {
               <span className="inline-flex h-2.5 w-2.5 rounded-full bg-sky-500 shadow-[0_0_18px_rgba(14,165,233,0.55)]" />
               Social media manager, marketplace e customer area in un solo ecosistema premium
             </div>
-            <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-slate-950 sm:text-6xl lg:text-7xl">
+            <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.2] tracking-[-0.075em] text-slate-950 sm:text-6xl lg:text-7xl">
               L’esperienza digitale che fa percepire il tuo brand più alto, più chiaro, più serio.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">

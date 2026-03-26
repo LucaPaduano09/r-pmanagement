@@ -50,6 +50,29 @@ a {
   }
 }
 
+@keyframes floatingBubblePresence {
+  0%,
+  10% {
+    opacity: 0;
+    transform: scale(0.92);
+    filter: blur(8px);
+  }
+
+  18%,
+  58% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  72%,
+  100% {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: blur(10px);
+  }
+}
+
 @keyframes shinePhone {
   0% {
     transform: translate3d(-140%, 0, 0) skewX(-12deg);
@@ -71,6 +94,26 @@ a {
   }
 }
 
+@keyframes marketplaceCardShine {
+  0% {
+    transform: translate3d(44%, -20%, 0) rotate(28deg);
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 0.26;
+  }
+
+  48% {
+    opacity: 0.86;
+  }
+
+  100% {
+    transform: translate3d(-132%, 110%, 0) rotate(28deg);
+    opacity: 0;
+  }
+}
+
 @keyframes fadeLiftIn {
   0% {
     opacity: 0;
@@ -82,6 +125,26 @@ a {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
     filter: blur(0);
+  }
+}
+
+.marketplace-card-shine {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 22%,
+    rgba(255, 255, 255, 0.94) 44%,
+    rgba(186, 230, 253, 0.82) 52%,
+    rgba(255, 255, 255, 0.15) 72%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  filter: blur(12px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .marketplace-card-shine {
+    opacity: 1;
+    animation: marketplaceCardShine 1050ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
